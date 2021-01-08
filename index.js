@@ -66,6 +66,7 @@ const SongMatchIntentHandler = {
 
     if(userResponse === 'help') return HelpIntentHandler.handle(handlerInput);
     if(userResponse === 'stop' || userResponse === 'cancel') return CancelAndStopIntentHandler.handle(handlerInput);
+    if(userResponse === 'repeat') return RepeatIntentHandler.handle(handlerInput);
     
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes(); 
     let speechText = '';
@@ -77,7 +78,7 @@ const SongMatchIntentHandler = {
         sessionAttributes.questionIndex -= 1; // do not move on to next step
       }
       else sessionAttributes.matchId += artists[sessionAttributes.artist].answers[sessionAttributes.questionIndex - 1].indexOf(userResponse.toUpperCase()).toString();
-      speechText = 'Based on your response, you got match ' + artists[sessionAttributes.artist].matches[sessionAttributes.matchId] + '. Play again?';
+      speechText = 'Based on your response, you got match ' + artists[sessionAttributes.artist].matches[sessionAttributes.matchId] + '. Do you want to play Song Match again?';
     }
     
     // processing user response to play again
@@ -89,10 +90,10 @@ const SongMatchIntentHandler = {
         sessionAttributes.questionIndex = -1;
         sessionAttributes.matchId = '';
         sessionAttributes.artist = '';
-        speechText = 'Please tell me another artist';
+        speechText = 'Please tell me another artist!';
       }
       else {
-        speechText = 'I need a yes or no';
+        speechText = 'I need a yes or no.';
         sessionAttributes.questionIndex -= 1; // do not move on to next step
       }
     }
@@ -129,7 +130,7 @@ const SongMatchIntentHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .addElicitSlotDirective("answer")
+      .addElicitSlotDirective('answer')
       .getResponse();
     
   }
@@ -146,8 +147,30 @@ const HelpIntentHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .addElicitSlotDirective("answer")
+      .addElicitSlotDirective('answer')
       .getResponse();
+  }
+};
+
+const RepeatIntentHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+      && handlerInput.requestEnvelope.request.intent.name === 'RepeatIntent';
+  },
+  handle(handlerInput) {
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    const questionIndex = sessionAttributes.questionIndex;
+    let speechText = '';
+    
+    if(questionIndex === 0) speechText = 'Please say an artist to start Song Match!';
+    else if(questionIndex === NUM_QUESTIONS + 1) speechText = 'Based on your response, you got match ' + artists[sessionAttributes.artist].matches[sessionAttributes.matchId] + '. Do you want to play Song Match again?';
+    else speechText = artists[sessionAttributes.artist].questions[questionIndex - 1];
+
+    return handlerInput.responseBuilder
+        .speak(speechText)
+        .reprompt(speechText)
+        .addElicitSlotDirective('answer')
+        .getResponse();
   }
 };
 
@@ -196,6 +219,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     LaunchRequestHandler,
     SongMatchIntentHandler,
     HelpIntentHandler,
+    RepeatIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler)
   .addErrorHandlers(ErrorHandler)
