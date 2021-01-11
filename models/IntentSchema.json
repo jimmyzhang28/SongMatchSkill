@@ -1,97 +1,90 @@
 {
-  "interactionModel": {
-      "languageModel": {
-          "invocationName": "song match",
-          "modelConfiguration": {
-              "fallbackIntentSensitivity": {
-                  "level": "LOW"
-              }
-          },
-          "intents": [
-              {
-                  "name": "AMAZON.CancelIntent",
-                  "samples": []
-              },
-              {
-                  "name": "AMAZON.HelpIntent",
-                  "samples": []
-              },
-              {
-                  "name": "AMAZON.StopIntent",
-                  "samples": []
-              },
-              {
-                  "name": "AMAZON.NavigateHomeIntent",
-                  "samples": []
-              },
-              {
-                  "name": "AMAZON.FallbackIntent",
-                  "samples": []
-              },
-              {
-                  "name": "SongMatchIntent",
-                  "slots": [
-                      {
-                          "name": "answer",
-                          "type": "AMAZON.SearchQuery"
-                      },
-                      {
-                          "name": "musician",
-                          "type": "AMAZON.Musician"
-                      }
-                  ],
-                  "samples": [
-                      "{musician}"
-                  ]
-              },
-              {
-                  "name": "RepeatIntent",
-                  "slots": [],
-                  "samples": [
-                      "repeat"
-                  ]
-              }
-          ],
-          "types": []
-      },
-      "dialog": {
-          "intents": [
-              {
-                  "name": "SongMatchIntent",
-                  "confirmationRequired": false,
-                  "prompts": {},
-                  "slots": [
-                      {
-                          "name": "answer",
-                          "type": "AMAZON.SearchQuery",
-                          "confirmationRequired": false,
-                          "elicitationRequired": true,
-                          "prompts": {
-                              "elicitation": "Elicit.Slot.1493154323025.1107018520878"
-                          }
-                      },
-                      {
-                          "name": "musician",
-                          "type": "AMAZON.Musician",
-                          "confirmationRequired": false,
-                          "elicitationRequired": false,
-                          "prompts": {}
-                      }
-                  ]
-              }
-          ],
-          "delegationStrategy": "SKILL_RESPONSE"
-      },
-      "prompts": [
-          {
-              "id": "Elicit.Slot.1493154323025.1107018520878",
-              "variations": [
-                  {
-                      "type": "PlainText",
-                      "value": "placeholder"
-                  }
-              ]
-          }
-      ]
-  }
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "song match",
+            "modelConfiguration": {
+                "fallbackIntentSensitivity": {
+                    "level": "LOW"
+                }
+            },
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "SongMatchIntent",
+                    "slots": [
+                        {
+                            "name": "answer",
+                            "type": "AMAZON.SearchQuery"
+                        },
+                        {
+                            "name": "musician",
+                            "type": "AMAZON.Musician"
+                        }
+                    ],
+                    "samples": [
+                        "{musician}"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "SongMatchIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "answer",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1493154323025.1107018520878"
+                            }
+                        },
+                        {
+                            "name": "musician",
+                            "type": "AMAZON.Musician",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "SKILL_RESPONSE"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1493154323025.1107018520878",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "placeholder"
+                    }
+                ]
+            }
+        ]
+    }
 }
