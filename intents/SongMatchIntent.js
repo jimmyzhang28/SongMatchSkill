@@ -68,6 +68,8 @@ exports.SongMatchIntentHandler = {
     
     // asking questions
     else {
+
+      let includeQuestionNumber = true;
         
       // ensure artist is correct, then ask first question
       if(sessionAttributes.questionIndex === 0) {
@@ -75,8 +77,13 @@ exports.SongMatchIntentHandler = {
         if(!ARTISTS[userArtist]) {
           speechText = 'Please say a valid artist.';
           sessionAttributes.questionIndex -= 1; // do not move on to next step
+          includeQuestionNumber = false;
         }
-        else sessionAttributes.artist = userArtist;
+        else {
+          sessionAttributes.artist = userArtist;
+          let artistName = ARTISTS[userArtist].name;
+          speechText = artistName + ', nice choice! Now answer these ' + NUM_QUESTIONS.toString() + ' questions, and we will get your ' + artistName + ' song! '; 
+        }
       }
       
       // ensure answer to previous question is valid and store it
@@ -84,11 +91,15 @@ exports.SongMatchIntentHandler = {
         if(!ARTISTS[sessionAttributes.artist].answers[sessionAttributes.questionIndex - 1].includes(userResponse.toUpperCase())) {
           speechText = 'Please say a valid answer. ';
           sessionAttributes.questionIndex -= 1; // do not move on to next step
+          includeQuestionNumber = false;
         }
-        else sessionAttributes.matchId += ARTISTS[sessionAttributes.artist].answers[sessionAttributes.questionIndex - 1].indexOf(userResponse.toUpperCase()).toString();
+        else {
+          sessionAttributes.matchId += ARTISTS[sessionAttributes.artist].answers[sessionAttributes.questionIndex - 1].indexOf(userResponse.toUpperCase()).toString();
+        }
       }
       
       // ask appropiate question
+      speechText += includeQuestionNumber ? (sessionAttributes.questionIndex >= 1 ? 'Got it! ' : '') + 'Question ' + (sessionAttributes.questionIndex + 1) + '. ' : '';
       speechText += sessionAttributes.questionIndex >= 0 ? ARTISTS[sessionAttributes.artist].questions[sessionAttributes.questionIndex] : '';
 
     }
