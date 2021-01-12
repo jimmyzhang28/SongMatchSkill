@@ -1,6 +1,10 @@
-exports.LAUNCH_STRING = 'Welcome to Song Match. I can help you understand which song by your favorite artist best matches your life. Please tell me the name of your favorite artist.';
+exports.LAUNCH_STRING = 'Welcome to Song Match. ' +
+                        'I can help you understand which song by your favorite artist best matches your life. ' +
+                        'Please tell me the name of your favorite artist.';
 
-exports.HELP_STRING = 'This is Song Match. I can help you understand which song by your favorite artist best matches your life. Please tell me the name of your favorite artist and answer the following questions.';
+exports.HELP_STRING = 'This is Song Match. ' +
+                      'I can help you understand which song by your favorite artist best matches your life. ' +
+                      'Please tell me the name of your favorite artist and answer the following questions.';
 
 exports.EXIT_STRING = 'Thanks for playing Song Match!';
 
@@ -13,7 +17,9 @@ exports.NUM_QUESTIONS = 3;
 exports.ARTISTS = {
   'ARIANA GRANDE' : {
       name : 'Ariana Grande',
-      questions : ['What is your favorite quality someone can have? Humor, loyalty, or empathy.', 'What do you prefer? Instagram or Snapchat.', 'What is your favorite pizza topping? Pepperoni, sausage, or pineapple.'],
+      questions : ['What is your favorite quality someone can have? Humor, loyalty, or empathy.',
+                  'What do you prefer? Instagram or Snapchat.',
+                  'What is your favorite pizza topping? Pepperoni, sausage, or pineapple.'],
       answers : [['HUMOR','LOYALTY','EMPATHY'], ['INSTAGRAM', 'SNAPCHAT'], ['PEPPERONI', 'SAUSAGE', 'PINEAPPLE']],
       matches : {
         "000": "Side to Side",
@@ -38,7 +44,9 @@ exports.ARTISTS = {
   },
   'SAINT MOTEL' : {
     name : 'Saint Motel',
-    questions : ['Where would you rather live? Paris, New York, or Hawaii.', 'What is your favorite season? Winter, spring, summer, or fall.', 'Do you like Tik Tok? Yes or no.'],
+    questions : ['Where would you rather live? Paris, New York, or Hawaii.',
+                'What is your favorite season? Winter, spring, summer, or fall.',
+                'Do you like Tik Tok? Yes or no.'],
     answers : [['PARIS','NEW YORK','HAWAII'], ['WINTER', 'SPRING', 'SUMMER', 'FALL'], ['YES', 'NO']],
     matches : {
       "000": "Sweet Talk",
@@ -69,7 +77,9 @@ exports.ARTISTS = {
   },
   'DRAKE' : {
     name : 'Drake',
-    questions : ['Where would you rather go for vacation? Tokyo, Venice, or Los Angeles.', 'Of these powers, which would you want to have? Flight, invisibility, or strength', 'Is the best shower cold or hot?'],
+    questions : ['Where would you rather go for vacation? Tokyo, Venice, or Los Angeles.',
+                'Of these powers, which would you want to have? Flight, invisibility, or strength',
+                'Is the best shower cold or hot?'],
     answers : [['TOKYO','VENICE','LOS ANGELES'], ['FLIGHT', 'INVISIBILITY', 'STRENGTH'], ['COLD', 'HOT']],
     matches : {
       "000": "Toosie Slide",
@@ -94,7 +104,9 @@ exports.ARTISTS = {
   },
   'BILLIE EILISH' : {
     name : 'Billie Eilish',
-    questions : ['What is your preferred movie genre? Horror, action, or comedy.', 'Of these powers, which would you want to have? Flight, invisibility, or strength', 'How do your friends describe you? Funny, smart, or caring.'],
+    questions : ['What is your preferred movie genre? Horror, action, or comedy.',
+                'Of these powers, which would you want to have? Flight, invisibility, or strength',
+                'How do your friends describe you? Funny, smart, or caring.'],
     answers : [['HORROR','ACTION','COMEDY'], ['FLIGHT', 'INVISIBILITY', 'STRENGTH'], ['FUNNY', 'SMART', 'CARING']],
     matches : {
       "000": "Ilomilo",
@@ -128,7 +140,9 @@ exports.ARTISTS = {
   },
   'RICK ASTLEY' : {
     name : 'Rick Astley',
-    questions : ['Where would you rather go for vacation? Tokyo, Venice, or Los Angeles.', 'What do you prefer? Instagram or Snapchat.', 'How do your friends describe you? Funny, smart, or caring.'],
+    questions : ['Where would you rather go for vacation? Tokyo, Venice, or Los Angeles.',
+                'What do you prefer? Instagram or Snapchat.',
+                'How do your friends describe you? Funny, smart, or caring.'],
     answers : [['TOKYO','VENICE','LOS ANGELES'], ['INSTAGRAM', 'SNAPCHAT'], ['FUNNY', 'SMART', 'CARING']],
     matches : {
       "000": "rick rolled",

@@ -1,5 +1,6 @@
 const { HELP_STRING } = require('../utils/constants');
 
+// only called when user says 'help' before starting the game dialog
 exports.HelpIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'

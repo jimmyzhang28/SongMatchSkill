@@ -11,25 +11,28 @@ exports.SongMatchIntentHandler = {
   handle(handlerInput) {
 
     let userResponse = handlerInput.requestEnvelope.request.intent.slots.answer.value;
+
     // initialMusician is the trigger for SongMatchIntent, only used for the first musician the user says
+    // every other response will go to the 'answer' slot (userResponse)
     let initialMusician = handlerInput.requestEnvelope.request.intent.slots.musician.value;
+
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes(); 
+
     let speechText = '';
 
+    // basic and likely interruptions
     if(userResponse === 'help') return HelpIntentHandler.handle(handlerInput);
     if(userResponse === 'stop' || userResponse === 'cancel') return CancelAndStopIntentHandler.handle(handlerInput);
     if(userResponse === 'repeat') {
       let curArtist = sessionAttributes.artist;
       let questionIdx = sessionAttributes.questionIndex;
       let matchId = sessionAttributes.matchId;
-      
       if(questionIdx === 0) 
         speechText = 'Please say an artist to start Song Match!';
       else if(questionIdx === NUM_QUESTIONS + 1) 
         speechText = MATCH_STRING(ARTISTS[curArtist].matches[matchId]);
       else 
         speechText = ARTISTS[curArtist].questions[questionIdx - 1];
-
       return handlerInput.responseBuilder
           .speak(speechText)
           .reprompt(speechText)
@@ -55,6 +58,7 @@ exports.SongMatchIntentHandler = {
         return CancelAndStopIntentHandler.handle(handlerInput);
       }
       else if (userResponse === 'yes') {
+        // reset data to play again
         sessionAttributes.questionIndex = -1;
         sessionAttributes.matchId = '';
         sessionAttributes.artist = '';
@@ -69,7 +73,7 @@ exports.SongMatchIntentHandler = {
     // asking questions
     else {
 
-      let includeQuestionNumber = true;
+      let includeQuestionNumber = true; // just for smoothness when prompting the user
         
       // ensure artist is correct, then ask first question
       if(sessionAttributes.questionIndex === 0) {
@@ -80,6 +84,7 @@ exports.SongMatchIntentHandler = {
           includeQuestionNumber = false;
         }
         else {
+          // successfully start game
           sessionAttributes.artist = userArtist;
           let artistName = ARTISTS[userArtist].name;
           speechText = artistName + ', nice choice! Now answer these ' + NUM_QUESTIONS.toString() + ' questions, and we will get your ' + artistName + ' song! '; 
@@ -94,6 +99,7 @@ exports.SongMatchIntentHandler = {
           includeQuestionNumber = false;
         }
         else {
+          // add answer to match id, which consists of indices of the user answers
           sessionAttributes.matchId += ARTISTS[sessionAttributes.artist].answers[sessionAttributes.questionIndex - 1].indexOf(userResponse.toUpperCase()).toString();
         }
       }
@@ -104,6 +110,7 @@ exports.SongMatchIntentHandler = {
 
     }
     
+    // progress the game
     sessionAttributes.questionIndex += 1;
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
     
