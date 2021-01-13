@@ -9,10 +9,15 @@ exports.HELP_STRING = 'This is Song Match. ' +
 exports.EXIT_STRING = 'Thanks for playing Song Match!';
 
 exports.MATCH_STRING = function (match) {
-  return 'Based on your response, you got ' + match + '. Do you want to play Song Match again?';
+  return '<speak>Based on your responses, you got ' + match.title + '. <audio src="' + match.url + '" /> Do you want to play Song Match again?</speak>';
 }
 
 exports.NUM_QUESTIONS = 3;
+
+const rickRolled = {
+  title : 'rolled',
+  url : 'https://rickrolled.s3.us-east-2.amazonaws.com/rockrilled.mp3'
+};
 
 exports.ARTISTS = {
   'ARIANA GRANDE' : {
@@ -22,24 +27,78 @@ exports.ARTISTS = {
                   'What is your favorite pizza topping? Pepperoni, sausage, or pineapple.'],
       answers : [['HUMOR','LOYALTY','EMPATHY'], ['INSTAGRAM', 'SNAPCHAT'], ['PEPPERONI', 'SAUSAGE', 'PINEAPPLE']],
       matches : {
-        "000": "Side to Side",
-        "001": "7 Rings",
-        "002": "7 Rings",
-        "010": "Positions",
-        "011": "34+35",
-        "012": "Problem",
-        "100": "Obvious",
-        "101": "Stuck with U",
-        "102": "No Tears Left to Cry",
-        "110": "Break Free",
-        "111": "Break Free",
-        "112": "Sweetener",
-        "200": "Thank U, Next",
-        "201": "POV",
-        "202": "God is a Woman",
-        "210": "One Last Time",
-        "211": "Love Me Harder",
-        "212": "Breathin"
+        '000': {
+          title: 'Side to Side',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/sidetoside.mp3' 
+        },
+        '001': {
+          title: '7 Rings',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/7rings.mp3' 
+        },
+        '002': {
+          title: '7 Rings',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/7rings.mp3' 
+        },
+        '010': {
+          title: 'Positions',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/7rings.mp3' 
+        },
+        '011': {
+          title: '34+35',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/34plus35.mp3' 
+        },
+        '012': {
+          title: 'Problem',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/problem.mp3' 
+        },
+        '100': {
+          title: 'Obvious',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/obvious.mp3' 
+        },
+        '101': {
+          title: 'Stuck with U',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/stuckwithu.mp3' 
+        },
+        '102': {
+          title: 'No Tears Left to Cry',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/notearslefttocry.mp3' 
+        },
+        '110': {
+          title: 'Break Free',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/breakfree.mp3' 
+        },
+        '111': {
+          title: 'Break Free',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/breakfree.mp3' 
+        },
+        '112': {
+          title: 'Sweetener',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/sweetener.mp3' 
+        },
+        '200': {
+          title: 'Thank U, Next',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/thankunext.mp3' 
+        },
+        '201': {
+          title: 'POV',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/pov.mp3' 
+        },
+        '202': {
+          title: 'God is a Woman',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/godisawoman.mp3' 
+        },
+        '210': {
+          title: 'One Last Time',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/onelasttime.mp3' 
+        },
+        '211': {
+          title: 'Love Me Harder',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/lovemeharder.mp3' 
+        },
+        '212': {
+          title: 'Breathin',
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/breathin.mp3' 
+        }
       }
   },
   'SAINT MOTEL' : {
@@ -49,30 +108,102 @@ exports.ARTISTS = {
                 'Do you like Tik Tok? Yes or no.'],
     answers : [['PARIS','NEW YORK','HAWAII'], ['WINTER', 'SPRING', 'SUMMER', 'FALL'], ['YES', 'NO']],
     matches : {
-      "000": "Sweet Talk",
-      "001": "Cold Cold Man",
-      "010": "My Type",
-      "011": "Cold Cold Man",
-      "020": "My Type",
-      "021": "Cold Cold Man",
-      "030": "My Type",
-      "031": "Cold Cold Man",
-      "100": "Sweet Talk",
-      "101": "A Good Song Never Dies",
-      "110": "Move",
-      "111": "A Good Song Never Dies",
-      "120": "Move",
-      "121": "Local long Distance Relationship",
-      "130": "Move",
-      "131": "A Good Song Never Dies",
-      "200": "Sweet Talk",
-      "201": "Preach",
-      "210": "Move",
-      "211": "Preach",
-      "220": "Move",
-      "221": "Preach",
-      "230": "Move",
-      "231": "Preach"
+      '000': {
+        title: 'Sweet Talk',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/sweettalk.mp3' 
+      },
+      '001': {
+        title: 'Cold Cold Man',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/coldcoldman.mp3' 
+      },
+      '010': {
+        title: 'My Type',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/mytype.mp3' 
+      },
+      '011': {
+        title: 'Cold Cold Man',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/coldcoldman.mp3' 
+      },
+      '020': {
+        title: 'My Type',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/mytype.mp3' 
+      },
+      '021': {
+        title: 'Cold Cold Man',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/coldcoldman.mp3' 
+      },
+      '030': {
+        title: 'My Type',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/mytype.mp3' 
+      },
+      '031': {
+        title: 'Cold Cold Man',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/coldcoldman.mp3' 
+      },
+      '100': {
+        title: 'Sweet Talk',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/sweettalk.mp3' 
+      },
+      '101': {
+        title: 'A Good Song Never Dies',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/agoodsongneverdies.mp3' 
+      },
+      '110': {
+        title: 'Move',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/move.mp3' 
+      },
+      '111': {
+        title: 'A Good Song Never Dies',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/agoodsongneverdies.mp3' 
+      },
+      '120': {
+        title: 'Move',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/move.mp3' 
+      },
+      '121': {
+        title: 'Local Long Distance Relationship',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/locallongdistancerelationship.mp3' 
+      },
+      '130': {
+        title: 'Move',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/move.mp3' 
+      },
+      '131': {
+        title: 'A Good Song Never Dies',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/agoodsongneverdies.mp3' 
+      },
+      '200': {
+        title: 'Sweet Talk',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/sweettalk.mp3' 
+      },
+      '201': {
+        title: 'Preach',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/preach.mp3' 
+      },
+      '210': {
+        title: 'Move',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/move.mp3' 
+      },
+      '211': {
+        title: 'Preach',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/preach.mp3' 
+      },
+      '220': {
+        title: 'Move',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/move.mp3' 
+      },
+      '221': {
+        title: 'Preach',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/preach.mp3' 
+      },
+      '230': {
+        title: 'Move',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/move.mp3' 
+      },
+      '231': {
+        title: 'Preach',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/saintmotel/preach.mp3' 
+      }
     }
   },
   'DRAKE' : {
@@ -82,24 +213,78 @@ exports.ARTISTS = {
                 'Is the best shower cold or hot?'],
     answers : [['TOKYO','VENICE','LOS ANGELES'], ['FLIGHT', 'INVISIBILITY', 'STRENGTH'], ['COLD', 'HOT']],
     matches : {
-      "000": "Toosie Slide",
-      "001": "One Dance",
-      "010": "Money in the Grave",
-      "011": "Passionfruit",
-      "020": "Marvins Room",
-      "021": "Laugh Now Cry Later",
-      "100": "Nonstop",
-      "101": "One Dance",
-      "110": "In My Feelings",
-      "111": "Passionfruit",
-      "120": "Marvins Room",
-      "121": "Laugh Now Cry Later",
-      "200": "Money in the Grave",
-      "201": "God's Plan",
-      "210": "Nonstop",
-      "211": "In My Feelings",
-      "220": "Marvins Room",
-      "221": "God's Plan"
+      '000': {
+        title: 'Toosie Slide',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/toosieslide.mp3' 
+      },
+      '001': {
+        title: 'One Dance',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/onedance.mp3' 
+      },
+      '010': {
+        title: 'Money in the Grave',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/moneyinthegrave.mp3' 
+      },
+      '011': {
+        title: 'Passionfruit',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/passionfruit.mp3' 
+      },
+      '020': {
+        title: 'Marvins Room',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/marvinsroom.mp3' 
+      },
+      '021': {
+        title: 'Laugh Now Cry Later',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/laughnowcrylater.mp3' 
+      },
+      '100': {
+        title: 'Nonstop',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/nonstop.mp3' 
+      },
+      '101': {
+        title: 'One Dance',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/onedance.mp3' 
+      },
+      '110': {
+        title: 'In My Feelings',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/inmyfeelings.mp3' 
+      },
+      '111': {
+        title: 'Passionfruit',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/passionfruit.mp3' 
+      },
+      '120': {
+        title: 'Marvins Room',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/marvinsroom.mp3' 
+      },
+      '121': {
+        title: 'Laugh Now Cry Later',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/laughnowcrylater.mp3' 
+      },
+      '200': {
+        title: 'Money in the Grave',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/moneyinthegrave.mp3' 
+      },
+      '201': {
+        title: 'God\'s Plan',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/godsplan.mp3' 
+      },
+      '210': {
+        title: 'Nonstop',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/nonstop.mp3' 
+      },
+      '211': {
+        title: 'In My Feelings',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/inmyfeelings.mp3' 
+      },
+      '220': {
+        title: 'Marvins Room',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/marvinsroom.mp3' 
+      },
+      '221': {
+        title: 'God\'s Plan',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/drake/godsplan.mp3' 
+      }
     }
   },
   'BILLIE EILISH' : {
@@ -109,33 +294,114 @@ exports.ARTISTS = {
                 'How do your friends describe you? Funny, smart, or caring.'],
     answers : [['HORROR','ACTION','COMEDY'], ['FLIGHT', 'INVISIBILITY', 'STRENGTH'], ['FUNNY', 'SMART', 'CARING']],
     matches : {
-      "000": "Ilomilo",
-      "001": "Bury a Friend",
-      "002": "Everything I Wanted",
-      "010": "You Should See Me in a Crown",
-      "011": "Bury a Friend",
-      "012": "When the Party's Over",
-      "020": "You Should See Me in a Crown",
-      "021": "Bury a Friend",
-      "022": "When the Party's Over",
-      "100": "Ocean Eyes",
-      "101": "Lovely",
-      "102": "Lovely",
-      "110": "Come Out and Play",
-      "111": "Therefore I Am",
-      "112": "Lovely",
-      "120": "Bad Guy",
-      "121": "Bad Guy",
-      "122": "No Time to Die",
-      "200": "Ocean Eyes",
-      "201": "Copycat",
-      "202": "Come Out and Play",
-      "210": "Ocean Eyes",
-      "211": "Copycat",
-      "212": "I Love You",
-      "220": "Ocean Eyes",
-      "221": "Wish You Were Gay",
-      "222": "Everything I Wanted"
+      '000': {
+        title: 'Ilomilo',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/ilomilo.mp3' 
+      },
+      '001': {
+        title: 'Bury a Friend',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/buryafriend.mp3' 
+      },
+      '002': {
+        title: 'Everything I Wanted',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/everythingiwanted.mp3' 
+      },
+      '010': {
+        title: 'You Should See Me in a Crown',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/youshouldseemeinacrown.mp3' 
+      },
+      '011': {
+        title: 'Bury a Friend',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/buryafriend.mp3' 
+      },
+      '012': {
+        title: 'When the Party\'s Over',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/whenthepartysover.mp3' 
+      },
+      '020': {
+        title: 'You Should See Me in a Crown',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/youshouldseemeinacrown.mp3' 
+      },
+      '021': {
+        title: 'Bury a Friend',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/buryafriend.mp3' 
+      },
+      '022': {
+        title: 'When the Party\'s Over',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/whenthepartysover.mp3' 
+      },
+      '100': {
+        title: 'Ocean Eyes',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/oceaneyes.mp3' 
+      },
+      '101': {
+        title: 'Lovely',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/lovely.mp3' 
+      },
+      '102': {
+        title: 'Lovely',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/lovely.mp3' 
+      },
+      '110': {
+        title: 'Come Out and Play',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/comeoutandplay.mp3' 
+      },
+      '111': {
+        title: 'Therefore I Am',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/thereforeiam.mp3' 
+      },
+      '112': {
+        title: 'Lovely',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/lovely.mp3' 
+      },
+      '120': {
+        title: 'Bad Guy',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/badguy.mp3' 
+      },
+      '121': {
+        title: 'Bad Guy',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/badguy.mp3' 
+      },
+      '122': {
+        title: 'No Time to Die',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/notimetodie.mp3' 
+      },
+      '200': {
+        title: 'Ocean Eyes',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/oceaneyes.mp3' 
+      },
+      '201': {
+        title: 'Copycat',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/copycat.mp3' 
+      },
+      '202': {
+        title: 'Come Out and Play',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/comeoutandplay.mp3' 
+      },
+      '210': {
+        title: 'Ocean Eyes',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/oceaneyes.mp3' 
+      },
+      '211': {
+        title: 'Copycat',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/copycat.mp3' 
+      },
+      '212': {
+        title: 'I Love You',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/iloveyou.mp3' 
+      },
+      '220': {
+        title: 'Ocean Eyes',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/oceaneyes.mp3' 
+      },
+      '221': {
+        title: 'Wish You Were Gay',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/wishyouweregay.mp3' 
+      },
+      '222': {
+        title: 'Everything I Wanted',
+        url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/billieeilish/everythingiwanted.mp3' 
+      }
     }
   },
   'RICK ASTLEY' : {
@@ -145,24 +411,24 @@ exports.ARTISTS = {
                 'How do your friends describe you? Funny, smart, or caring.'],
     answers : [['TOKYO','VENICE','LOS ANGELES'], ['INSTAGRAM', 'SNAPCHAT'], ['FUNNY', 'SMART', 'CARING']],
     matches : {
-      "000": "rick rolled",
-      "001": "rick rolled",
-      "002": "rick rolled",
-      "010": "rick rolled",
-      "011": "rick rolled",
-      "012": "rick rolled",
-      "100": "rick rolled",
-      "101": "rick rolled",
-      "102": "rick rolled",
-      "110": "rick rolled",
-      "111": "rick rolled",
-      "112": "rick rolled",
-      "200": "rick rolled",
-      "201": "rick rolled",
-      "202": "rick rolled",
-      "210": "rick rolled",
-      "211": "rick rolled",
-      "212": "rick rolled"
+      '000': rickRolled,
+      '001': rickRolled,
+      '002': rickRolled,
+      '010': rickRolled,
+      '011': rickRolled,
+      '012': rickRolled,
+      '100': rickRolled,
+      '101': rickRolled,
+      '102': rickRolled,
+      '110': rickRolled,
+      '111': rickRolled,
+      '112': rickRolled,
+      '200': rickRolled,
+      '201': rickRolled,
+      '202': rickRolled,
+      '210': rickRolled,
+      '211': rickRolled,
+      '212': rickRolled
     }
   }
 };
