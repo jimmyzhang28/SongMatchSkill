@@ -1,4 +1,4 @@
-const { EXIT_STRING } = require('../utils/constants');
+const { EXIT_STRING, EXIT_SOUND } = require('../utils/constants');
 
 exports.CancelAndStopIntentHandler = {
   canHandle(handlerInput) {
@@ -8,7 +8,7 @@ exports.CancelAndStopIntentHandler = {
   },
   handle(handlerInput) {
     return handlerInput.responseBuilder
-      .speak(EXIT_STRING)
+      .speak(EXIT_SOUND + EXIT_STRING)
       .withShouldEndSession(true)
       .getResponse();
   }

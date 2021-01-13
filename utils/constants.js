@@ -8,8 +8,12 @@ exports.HELP_STRING = 'This is Song Match. ' +
 
 exports.EXIT_STRING = 'Thanks for playing Song Match!';
 
+exports.LAUNCH_SOUND = '<audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_intro_01"/>';
+
+exports.EXIT_SOUND = '<audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_outro_01"/>';
+
 exports.MATCH_STRING = function (match) {
-  return '<speak>Based on your responses, you got ' + match.title + '. <audio src="' + match.url + '" /> Do you want to play Song Match again?</speak>';
+  return '<speak>Based on your responses, you got ' + match.title + '! <audio src="' + match.url + '" /> Do you want to play Song Match again?</speak>';
 }
 
 exports.NUM_QUESTIONS = 3;

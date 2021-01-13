@@ -1,4 +1,4 @@
-const { LAUNCH_STRING } = require('../utils/constants.js');
+const { LAUNCH_STRING, LAUNCH_SOUND } = require('../utils/constants.js');
 
 exports.LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -12,8 +12,8 @@ exports.LaunchRequestHandler = {
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 
     return handlerInput.responseBuilder
-      .speak(LAUNCH_STRING)
-      .reprompt(LAUNCH_STRING)
+      .speak(LAUNCH_SOUND + LAUNCH_STRING)
+      .reprompt(LAUNCH_SOUND + LAUNCH_STRING)
       .getResponse();
   }
 };
