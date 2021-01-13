@@ -42,10 +42,12 @@ exports.SongMatchIntentHandler = {
     
     // verify last user answer, then reveal user song match
     if (sessionAttributes.questionIndex === NUM_QUESTIONS) {
+      // if user did not say one of the answers to the current question
       if(!ARTISTS[sessionAttributes.artist].answers[sessionAttributes.questionIndex - 1].includes(userResponse.toUpperCase())) {
         speechText = 'Please say a valid answer. ' + ARTISTS[sessionAttributes.artist].questions[sessionAttributes.questionIndex - 1];
         sessionAttributes.questionIndex -= 1; // do not move on to next step
       }
+      // else user receives their match
       else {
         sessionAttributes.matchId += ARTISTS[sessionAttributes.artist].answers[sessionAttributes.questionIndex - 1].indexOf(userResponse.toUpperCase()).toString();
         speechText = MATCH_STRING(ARTISTS[sessionAttributes.artist].matches[sessionAttributes.matchId]);
@@ -79,6 +81,7 @@ exports.SongMatchIntentHandler = {
       if(sessionAttributes.questionIndex === 0) {
         let userArtist = (!userResponse ? initialMusician : userResponse).toUpperCase();
         if(!ARTISTS[userArtist]) {
+          // reprompt for a valid artist
           speechText = 'Please say a valid artist.';
           sessionAttributes.questionIndex -= 1; // do not move on to next step
           includeQuestionNumber = false;
@@ -93,6 +96,7 @@ exports.SongMatchIntentHandler = {
       
       // ensure answer to previous question is valid and store it
       else {
+        // if user did not say one of the answers to the current question
         if(!ARTISTS[sessionAttributes.artist].answers[sessionAttributes.questionIndex - 1].includes(userResponse.toUpperCase())) {
           speechText = 'Please say a valid answer. ';
           sessionAttributes.questionIndex -= 1; // do not move on to next step

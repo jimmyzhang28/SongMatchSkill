@@ -4,7 +4,7 @@ exports.LAUNCH_STRING = 'Welcome to Song Match. ' +
 
 exports.HELP_STRING = 'This is Song Match. ' +
                       'I can help you understand which song by your favorite artist best matches your life. ' +
-                      'Please tell me the name of your favorite artist and answer the following questions.';
+                      'Please tell me the name of your favorite artist and answer the questions that follow.';
 
 exports.EXIT_STRING = 'Thanks for playing Song Match!';
 
@@ -41,7 +41,7 @@ exports.ARTISTS = {
         },
         '010': {
           title: 'Positions',
-          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/7rings.mp3' 
+          url: 'https://songmatchaudio.s3.us-east-2.amazonaws.com/arianagrande/positions.mp3' 
         },
         '011': {
           title: '34+35',
